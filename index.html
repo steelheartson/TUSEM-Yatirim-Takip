@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Application</title>
+    <script>
+        const jsonData = {
+            "stocks": [
+                { "symbol": "AAPL", "name": "Apple Inc.", "price": 145.3 },
+                { "symbol": "GOOGL", "name": "Alphabet Inc.", "price": 2738.9 }
+            ],
+            "funds": [
+                { "name": "Vanguard Total Stock Market Index Fund", "value": 10000 },
+                { "name": "Fidelity Contrafund", "value": 5000 }
+            ]
+        };
+
+        function displayAssets() {
+            const stocksContainer = document.getElementById('stocks');
+            const fundsContainer = document.getElementById('funds');
+
+            jsonData.stocks.forEach(stock => {
+                const stockItem = document.createElement('div');
+                stockItem.textContent = `${stock.name} (${stock.symbol}): $${stock.price}`;
+                stocksContainer.appendChild(stockItem);
+            });
+
+            jsonData.funds.forEach(fund => {
+                const fundItem = document.createElement('div');
+                fundItem.textContent = `${fund.name}: $${fund.value}`;
+                fundsContainer.appendChild(fundItem);
+            });
+        }
+    </script>
+</head>
+<body onload="displayAssets()">
+    <h1>My Portfolio</h1>
+    <h2>Stocks</h2>
+    <div id="stocks"></div>
+    <h2>Funds</h2>
+    <div id="funds"></div>
+</body>
+</html>
